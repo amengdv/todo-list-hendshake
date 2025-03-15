@@ -70,6 +70,15 @@ export default function Home() {
     setAccessibility(0.5);
   };
 
+	// Handle Deletion
+	const handleDelete = (index: number) => {
+    setCards(prevCards => {
+      const updatedCards = [...prevCards];
+      updatedCards.splice(index, 1);
+      return updatedCards;
+    });
+  };
+
   return (
     <div className="flex min-h-screen items-start justify-start p-4 gap-8">
       {/* Form Section */}
@@ -145,7 +154,7 @@ export default function Home() {
               type={card.type}
               accessibility={card.accessibility}
               bookingRequired={card.bookingRequired}
-              onDelete={() => {}}
+              onDelete={() => handleDelete(index)}
             />
           ))
         )}  
