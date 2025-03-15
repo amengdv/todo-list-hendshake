@@ -26,11 +26,9 @@ export default function Home() {
   useEffect(() => {
     try {
       const savedCards = localStorage.getItem("cards");
-      console.log("Retrieved from localStorage:", savedCards);
       
       if (savedCards && savedCards !== "undefined") {
         const parsedCards = JSON.parse(savedCards);
-        console.log("Parsed cards:", parsedCards);
         setCards(parsedCards);
       }
     } catch (error) {
@@ -44,7 +42,6 @@ export default function Home() {
   useEffect(() => {
     if (!loading) {
       try {
-        console.log("Saving to localStorage:", cards);
         localStorage.setItem("cards", JSON.stringify(cards));
       } catch (error) {
         console.error("Error saving cards to localStorage:", error);
